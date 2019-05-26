@@ -1,11 +1,11 @@
 +++
 author = "Amy"
 categories = []
-date = "2019-04-26T17:48:40.000-03:00"
+date = "2019-04-26T20:48:40+00:00"
 draft = true
-images = ["img/post.jpg"]
+images = [""]
 tags = []
-title = "Bunda"
+title = "Teste Online"
 
 +++
-Não sei o que dizer nesse texto,estou aqui na minha, com a minha cara de desorientada, esfregando os olhos
+Eu sei o que dizer nesse texto, estou aqui na minha, com a minha cara de desorientada, coçando o ouvido
