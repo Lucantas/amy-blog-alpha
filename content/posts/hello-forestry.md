@@ -1,7 +1,6 @@
 +++
 categories = []
 date = "2019-05-26T03:00:00+00:00"
-draft = true
 images = ["/uploads/12482333.jpg"]
 tags = []
 title = "Hello Forestry!"
