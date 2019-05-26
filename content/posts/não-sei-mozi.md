@@ -1,7 +1,6 @@
 +++
 categories = []
 date = "2019-05-25T03:00:00+00:00"
-draft = true
 images = ["/uploads/porco.jpg"]
 tags = []
 title = "Não sei mozi"
