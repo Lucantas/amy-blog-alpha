@@ -2,7 +2,6 @@
 author = "Amy"
 categories = []
 date = "2019-04-26T20:48:40+00:00"
-draft = true
 images = [""]
 tags = []
 title = "Teste Online"
