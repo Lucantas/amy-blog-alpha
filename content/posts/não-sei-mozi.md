@@ -1,0 +1,10 @@
++++
+categories = []
+date = "2019-05-25T03:00:00+00:00"
+draft = true
+images = ["/uploads/porco.jpg"]
+tags = []
+title = "Não sei mozi"
+
++++
+Estou com vontade de comer bacon... Sempre! Mas a pessoa compra o bacon e deixa estragar, infelizmente não compro mais bacon
