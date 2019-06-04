@@ -2,8 +2,10 @@
 title = "{{ replace .Name "-" " " | title }}"
 date = {{ .Date }}
 draft = false
-
-# Tags and categories
+author = "Amy"
 tags = []
 categories = []
+images = []
+position = []
+reader = false
 +++

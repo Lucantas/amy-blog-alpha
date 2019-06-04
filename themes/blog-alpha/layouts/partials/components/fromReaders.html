@@ -1,0 +1,41 @@
+<section class="readers-block post-container">
+   <div class="container">
+        <h3 class="display-5 mb-3 f-2 f-w-700">
+            Histórias dos Leitores
+        </h3>
+        <div class="readers-posts">
+            {{ range .Pages}}
+                {{ if .Params.Reader }}
+                    <div class="row border-b-1 b-lightgray">
+                        <div class="col-4">
+                            {{ $img := "img/reader.jpg"}}
+                            {{ if isset .Params "author_logo" }}
+                                {{ $img = .Params.author_logo}}
+                            {{ else }}
+                                {{ if gt (len .Params.Images) 0 }}
+                                    {{ $img = index .Params.images 0}}
+                                {{end }}
+                            {{ end }}
+                            <figure>
+                                <img class="fit-width fit-height rounded" src="{{ .Site.BaseURL }}{{$img}}" alt="">
+                            </figure>
+                        </div>
+                        <div class="col-8">
+                            <span class="c-gray-2 post-categories f-08">
+                                {{ range $index, $element := .Params.Categories }}                                     
+                                    {{ $element }}{{ if eq $index 0 }}, {{ end }}
+                                {{ end }}
+                            </span>
+                            <h4 class="f-1 f-w-900">{{ .Title }}</h4>
+                        </div>
+                    </div>
+                {{ end }}
+            {{ end }}               
+        </div>
+   </div>
+   {{ $photography := .Site.Taxonomies.categories.readers  }}
+   {{ range $photography.Pages }}
+        {{ .Content }}
+   {{ end }}
+
+</section>

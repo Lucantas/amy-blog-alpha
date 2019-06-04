@@ -1,0 +1,13 @@
+<article class="main-article row mt-4 ml-0 mr-0">
+    <figure class="fit-width m-0">
+        <img src="{{ .Site.BaseURL }}{{index .Params.Images 0}}" alt="" srcset="" class="fit-width">
+    </figure>
+    <div class="pl-4 pr-4 bg-white">
+        {{ $creationDate := .Params.Date }}
+        <p class="mt-4">by {{ .Params.Author }} {{ dateFormat "2" $creationDate }} {{ index $.Site.Data.meses (printf "%s" (dateFormat "1" $creationDate))}} {{ dateFormat "2006" $creationDate }}</cite>
+        <h2>{{ .Title }}</h2>
+        <div class="post-text">
+            <p>{{ .Content }}</p>
+        </div>
+    </div>
+</article>
