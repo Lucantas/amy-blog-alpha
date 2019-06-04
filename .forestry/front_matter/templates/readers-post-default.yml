@@ -29,3 +29,5 @@ fields:
     maxSize: 250
   label: Author Logo
   description: The image logo of the writter
+pages:
+- content/posts/pais-de-primeira-viagem.md
