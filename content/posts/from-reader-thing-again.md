@@ -1,12 +1,12 @@
 +++
-title = "From Reader Thing Again"
-date = 2019-06-04T10:38:54-03:00
-draft = false
 author = "Amy"
-tags = []
+author_logo = "img/reader3.jpg"
 categories = ["Viagem", "Aventura"]
+date = "2019-06-04T10:38:54.000-03:00"
 images = []
 position = []
 reader = true
-author_logo = "img/reader3.jpg"
+tags = []
+title = "Viajando com o filho pela primeira vez"
+
 +++
