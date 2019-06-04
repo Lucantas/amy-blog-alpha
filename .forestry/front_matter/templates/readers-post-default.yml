@@ -23,3 +23,9 @@ fields:
 - type: boolean
   name: reader
   label: reader
+- name: author_logo
+  type: file
+  config:
+    maxSize: 250
+  label: Author Logo
+  description: The image logo of the writter
