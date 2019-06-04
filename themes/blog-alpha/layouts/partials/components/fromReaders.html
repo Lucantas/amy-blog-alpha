@@ -1,12 +1,12 @@
-<section class="readers-block post-container">
-   <div class="container">
+<section class="readers-block post-container bg-gray-1 pt-5 pb-5">
+   <div class="container bg-white pt-3 readers-post-container">
         <h3 class="display-5 mb-3 f-2 f-w-700">
             Histórias dos Leitores
         </h3>
         <div class="readers-posts">
             {{ range .Pages}}
                 {{ if .Params.Reader }}
-                    <div class="row border-b-1 b-lightgray">
+                    <div class="row border-b-1 b-lightgray pt-2 pb-2">
                         <div class="col-4">
                             {{ $img := "img/reader.jpg"}}
                             {{ if isset .Params "author_logo" }}
