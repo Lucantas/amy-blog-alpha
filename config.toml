@@ -1,5 +1,5 @@
 baseURL = "https://lucantas.github.io/amy.github.io/"
 languageCode = "en-us"
-title = "Diário da Amy"
+title = "Pais por Acaso"
 theme = "blog-alpha"
 publishDir = "amy.github.io"
