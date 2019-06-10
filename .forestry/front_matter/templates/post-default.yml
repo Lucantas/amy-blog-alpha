@@ -18,5 +18,5 @@ fields:
   name: categories
   label: categories
 pages:
-- content/posts/hello-forestry.md
 - content/posts/não-sei-mozi.md
+- content/posts/hello-forestry.md
