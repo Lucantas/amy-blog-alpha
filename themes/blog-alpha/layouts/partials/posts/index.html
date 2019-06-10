@@ -1,0 +1,49 @@
+{{ define "main" -}}
+<section class="col-md-12 pl-5 pr-5">
+    <article class="row mt-4 ml-auto mr-auto bg-white c-gray-3 pt-5 pb-5">
+        <figure class="fit-width m-0">
+            <img src="{{ .Site.BaseURL }}{{index .Params.Images 0}}" alt="" srcset="" class="fit-width">
+        </figure>
+        <div class="pl-0 pr-0 bg-white fit-width mt-4">            
+            <a class="anchor" href="{{ .Permalink }}">
+                <h1>{{ .Title }}</h1>
+            </a>
+            {{ $creationDate := .Params.Date }}
+            <p class="mt-4">by {{ .Params.Author }} {{ dateFormat "2" $creationDate }} {{ index $.Site.Data.meses (printf "%s" (dateFormat "1" $creationDate))}} {{ dateFormat "2006" $creationDate }}</cite>
+
+            <div class="post-footer pt-2 pb-2 pl-0 pr-0 bg-white fit-width c-secondary post-categories f-08">      
+                {{ $categoriesLen := len .Params.Categories }}
+                {{ range $index, $element := .Params.Categories }}                    
+                    {{ $element }}{{ if (ne $index (sub $categoriesLen 1)) }}, {{ end }}
+                {{ end }}
+            </div>            
+        </div>
+        <div class="fit-width row justify-content-around pl-3">
+            <div class="col-8 mt-4 post-line pl-0"></div>
+            <div class="comments-button f-3 col-3 pr-0 bg-primary p-2 m-auto text-center row justify-content-center align-items-center">
+                <i class="icofont-speech-comments c-secondary col-6 p-0"></i>            
+                <span class="c-secondary text-center col-6 p-0">11</span>
+            </div>
+        </div> 
+        <div class="post-text pt-4 pb-4" >
+            <p>{{ .Content }}</p>
+        </div>
+        <div class="post-tags fit-width">
+            <h5 class="mt-3 mb-3 bold">Tags</h5> 
+            <div class="popular-categories row">                
+                {{ $tagsLen := len .Params.Tags }}
+                {{ $counter := 0 }} 
+                {{ $limit := 9 }}
+                <ul class="list-unstyled m-0">
+                    {{ range $index, $name := .Params.Tags }}  
+                        {{ if le $counter $limit}}
+                            <li class="pt-2 pb-2 ml-1 mr-1">{{ $name }}</li>                
+                        {{ end }}
+                        {{ $counter = add $counter 1}}
+                    {{ end }}              
+                </ul>
+            </div>
+        </div>
+    </article>
+</section>
+{{ end }}
