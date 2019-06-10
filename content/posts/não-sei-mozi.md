@@ -1,5 +1,5 @@
 +++
-categories = []
+categories = ["Dúvida", "Teste"]
 date = "2019-05-25T03:00:00+00:00"
 images = ["/uploads/porco.jpg"]
 tags = []

@@ -1,15 +1,25 @@
 <div class="col-md-6">
-    <article class="main-article row mt-4 ml-0 mr-0">
+    <article class="main-article row mt-4 ml-0 mr-0 bg-white">
         <figure class="fit-width m-0">
             <img src="{{ .Site.BaseURL }}{{index .Params.Images 0}}" alt="" srcset="" class="fit-width">
         </figure>
-        <div class="pl-4 pr-4 bg-white">
+        <div class="pl-4 pr-4 bg-white fit-width">
             {{ $creationDate := .Params.Date }}
             <p class="mt-4">by {{ .Params.Author }} {{ dateFormat "2" $creationDate }} {{ index $.Site.Data.meses (printf "%s" (dateFormat "1" $creationDate))}} {{ dateFormat "2006" $creationDate }}</cite>
             <h2>{{ .Title }}</h2>
             <div class="post-text">
                 <p>{{ .Content }}</p>
             </div>
+        </div>
+        <div class="fit-width row">
+            <div style="border:1px solid #e9e9e9;background:none;height:1px;" class="w-75 mt-4"></div>
+            <i class="icofont-speech-comments f-3 ml-4"></i>
+        </div>
+        <div class="post-footer p-4 bg-white fit-width c-gray-2 post-categories f-08">      
+            {{ $categoriesLen := len .Params.Categories }}
+            {{ range $index, $element := .Params.Categories }}                    
+                {{ $element }}{{ if (ne $index (sub $categoriesLen 1)) }}, {{ end }}
+            {{ end }}
         </div>
     </article>
 </div>
