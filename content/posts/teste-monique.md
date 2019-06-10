@@ -3,7 +3,7 @@ title = "Teste Monique"
 date = 2019-05-26T17:45:26-03:00
 draft = false
 images = ["img/post3.jpg"]
-tags = []
+tags = ["teste da Monique", "sem idéias"]
 categories = ["Teste", "Validação"]
 +++
 
