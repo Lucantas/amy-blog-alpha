@@ -81,21 +81,21 @@
                 {{ $currentPagePermalink := .Permalink }}
                 {{ $tags := .Params.tags }}
                 {{ range .Site.Pages }}
-                {{ $isMatchTags := intersect $tags .Params.tags | len | lt 1 }}
-                {{ if and $isMatchTags (ne .Permalink $currentPagePermalink) }}                        
-                    {{ $s = $s | append . }}
-                {{ $.Scratch.Add "count" 1 }}
-                {{ end }}
+                    {{ $isMatchTags := intersect $tags .Params.tags | len | lt 1 }}
+                    {{ if and $isMatchTags (ne .Permalink $currentPagePermalink) }}                        
+                        {{ $s = $s | append . }}
+                    {{ $.Scratch.Add "count" 1 }}
+                    {{ end }}
                 {{ end }}
 
                 {{ if eq ($.Scratch.Get "count") 0 }}
                 {{ $.Scratch.Set "limit" 0 }}
                 {{ range .Site.Pages }}
-                {{ $isMatchTags := intersect $tags .Params.tags | len | lt 0 }}
-                {{ if and $isMatchTags (ne .Permalink $currentPagePermalink) (lt ($.Scratch.Get "limit") 5) }}
-                    {{ $s = $s | append . }}
-                    {{ $.Scratch.Add "limit" 1 }}
-                {{ end }}
+                    {{ $isMatchTags := intersect $tags .Params.tags | len | lt 0 }}
+                    {{ if and $isMatchTags (ne .Permalink $currentPagePermalink) (lt ($.Scratch.Get "limit") 5) }}
+                        {{ $s = $s | append . }}
+                        {{ $.Scratch.Add "limit" 1 }}
+                    {{ end }}
                 {{ end }}
                 {{ end }} 
                 {{ if gt (len $s) 0 }}
