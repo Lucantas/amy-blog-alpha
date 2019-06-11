@@ -3,3 +3,23 @@ languageCode = "en-us"
 title = "Pais por Acaso"
 theme = "blog-alpha"
 publishDir = "amy.github.io"
+
+[menu]
+
+    [[menu.main]]
+        identifier = "Início"
+        title = "Página Inicial"
+        url = "/"
+        weight = -200
+
+    [[menu.main]]
+        identifier = "Sobre"
+        title = "Sobre Nós"
+        url = "/about"
+        weight = 110
+
+    [[menu.main]]
+        identifier = "Contato"
+        title = "Página de Contato"
+        url = "/contact"
+        weight = 200
