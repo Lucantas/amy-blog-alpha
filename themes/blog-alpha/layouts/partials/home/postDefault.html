@@ -1,7 +1,7 @@
 <div class="col-md-6">
     <article class="main-article row mt-4 ml-auto mr-auto bg-white c-gray-3">
         <figure class="fit-width m-0">
-            {{ if isset .Params "Images" }}
+            {{ if isset .Params "images" }}
                 <img src="{{ .Site.BaseURL }}{{index .Params.Images 0}}" alt="" srcset="" class="fit-width">
             {{ end }}
         </figure>
