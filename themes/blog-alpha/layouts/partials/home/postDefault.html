@@ -6,9 +6,14 @@
             {{ end }}
         </figure>
         <div class="pl-4 pr-4 bg-white fit-width">
-            {{ if isset .Params "Date" }}
+            {{ if ne .Params.Date nil }}
                 {{ $creationDate := .Params.Date }}
-                <p class="mt-4">by {{ .Params.Author }} {{ dateFormat "2" $creationDate }} {{ index $.Site.Data.meses (printf "%s" (dateFormat "1" $creationDate))}} {{ dateFormat "2006" $creationDate }}</cite>
+                <p class="mt-4">
+                    {{ if ne .Params.Author nil }}
+                        by {{ .Params.Author }} 
+                    {{ end }}
+                    {{ dateFormat "2" $creationDate }} {{ index $.Site.Data.meses (printf "%s" (dateFormat "1" $creationDate))}} {{ dateFormat "2006" $creationDate }}
+                </p>
             {{ end }}
             <a class="anchor" href="{{ .Permalink }}">
                 <h2>{{ .Title }}</h2>
@@ -19,9 +24,9 @@
         </div> 
         <div class="fit-width row justify-content-around">
             <div class="col-8 mt-4 post-line"></div>
-            <div class="comments-button f-2 col-2 pr-0 bg-primary p-2 ml-auto mr-auto mt-2 text-center row justify-content-center align-items-center">
+            <div class="comments-button f-2 col-2 pr-0 p-2 ml-auto mr-auto mt-2 text-center row justify-content-center align-items-center">
                 <i class="icofont-speech-comments c-secondary col-6 p-0"></i>            
-                <span class="c-secondary text-center col-6 p-0">11</span>
+                <span class="c-primary text-center col-6 p-0">11</span>
             </div>
         </div>
         <div class="post-footer p-4 bg-white fit-width c-secondary post-categories f-08">      
