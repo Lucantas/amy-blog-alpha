@@ -20,10 +20,10 @@
                 </p>
             {{ end }}
             <div class="row pl-3 pr-3">
-                {{ if ne .Params.Categories nil }}
+                {{ if ne .Params.categories nil }}
                 <div class="col-6 post-footer pt-2 pb-2 pl-0 pr-0 bg-white fit-width c-secondary post-categories f-08">                          
-                    {{ $categoriesLen := len .Params.Categories }}
-                    {{ range $index, $element := .Params.Categories }}                    
+                    {{ $categoriesLen := len .Params.categories }}
+                    {{ range $index, $element := .Params.categories }}                    
                         {{ $element }}{{ if (ne $index (sub $categoriesLen 1)) }}, {{ end }}
                     {{ end }}
                 </div>  
