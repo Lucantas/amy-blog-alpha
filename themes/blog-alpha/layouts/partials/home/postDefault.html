@@ -2,15 +2,15 @@
     <article class="main-article row mt-4 ml-auto mr-auto bg-white c-gray-3">
         <figure class="fit-width m-0">
             {{ if isset .Params "images" }}
-                <img src="{{ .Site.BaseURL }}{{index .Params.Images 0}}" alt="" srcset="" class="fit-width">
+                <img src="{{ .Site.BaseURL }}{{index .Params.images 0}}" alt="" srcset="" class="fit-width">
             {{ end }}
         </figure>
         <div class="pl-4 pr-4 bg-white fit-width">
-            {{ if ne .Params.Date nil }}
-                {{ $creationDate := .Params.Date }}
+            {{ if ne .Params.date nil }}
+                {{ $creationDate := .Params.date }}
                 <p class="mt-4">
-                    {{ if ne .Params.Author nil }}
-                        by {{ .Params.Author }} 
+                    {{ if ne .Params.author nil }}
+                        by {{ .Params.author }} 
                     {{ end }}
                     {{ dateFormat "2" $creationDate }} {{ index $.Site.Data.meses (printf "%s" (dateFormat "1" $creationDate))}} {{ dateFormat "2006" $creationDate }}
                 </p>
@@ -30,8 +30,8 @@
             </div>
         </div>
         <div class="post-footer p-4 bg-white fit-width c-secondary post-categories f-08">      
-            {{ $categoriesLen := len .Params.Categories }}
-            {{ range $index, $element := .Params.Categories }}                    
+            {{ $categoriesLen := len .Params.categories }}
+            {{ range $index, $element := .Params.categories }}                    
                 {{ $element }}{{ if (ne $index (sub $categoriesLen 1)) }}, {{ end }}
             {{ end }}
         </div>

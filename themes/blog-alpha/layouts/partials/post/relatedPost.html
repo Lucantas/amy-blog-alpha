@@ -1,8 +1,8 @@
 <li>
     <article class="row pl-3 pr-4">
             <figure class="fit-width m-0">
-                {{ if ne .Params.Images nil }}
-                    <img src="{{ .Site.BaseURL }}{{index .Params.Images 0}}" alt="" srcset="" class="fit-width">
+                {{ if ne .Params.images nil }}
+                    <img src="{{ .Site.BaseURL }}{{index .Params.images 0}}" alt="" srcset="" class="fit-width">
                 {{ end }}
             </figure>
             <h2>{{ .Title }}</h2>
