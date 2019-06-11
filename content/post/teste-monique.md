@@ -1,10 +1,9 @@
 +++
-title = "Teste Monique"
-date = 2019-05-26T17:45:26-03:00
-draft = false
+categories = ["Teste", "Validação"]
+date = "2019-05-26T17:45:26.000-03:00"
 images = ["img/post3.jpg"]
 tags = ["teste da Monique", "sem idéias"]
-categories = ["Teste", "Validação"]
-+++
+title = "Teste Monique"
 
-eu sou monique, estou procurando ideias de logos no meu celular com cara de desorientada, me segue que te sigo, faço anal
++++
+eu sou monique, estou procurando ideias de logos no meu celular com cara de desorientada, me segue que te sigo
