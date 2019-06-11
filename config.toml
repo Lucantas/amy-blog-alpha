@@ -23,3 +23,6 @@ publishDir = "amy.github.io"
         title = "Página de Contato"
         url = "/contact"
         weight = 200
+
+[social]
+  twitter = "paisporacaso"
