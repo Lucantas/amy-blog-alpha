@@ -17,6 +17,3 @@ fields:
 - type: list
   name: categories
   label: categories
-pages:
-- content/posts/não-sei-mozi.md
-- content/posts/hello-forestry.md
