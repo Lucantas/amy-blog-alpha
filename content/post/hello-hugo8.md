@@ -2,7 +2,7 @@
 title = "Hello Hugo"
 date = 2019-05-25T22:36:47-03:00
 draft = false
-tags = []
+tags = ["teste"]
 images = ["img/post2.jpg"]
 categories = ["Hugo", "Teste"]
 +++

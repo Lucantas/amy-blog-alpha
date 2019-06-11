@@ -1,0 +1,10 @@
+<li>
+    <article class="row pl-3 pr-4">
+            <figure class="fit-width m-0">
+                    {{ if isset .Params "Images" }}
+                    <img src="{{ .Site.BaseURL }}{{index .Params.Images 0}}" alt="" srcset="" class="fit-width">
+                {{ end }}
+            </figure>
+            <h2>{{ .Title }}</h2>
+    </article> 
+</li>

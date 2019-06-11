@@ -1,11 +1,15 @@
 <div class="col-md-6">
     <article class="main-article row mt-4 ml-auto mr-auto bg-white c-gray-3">
         <figure class="fit-width m-0">
-            <img src="{{ .Site.BaseURL }}{{index .Params.Images 0}}" alt="" srcset="" class="fit-width">
+            {{ if isset .Params "Images" }}
+                <img src="{{ .Site.BaseURL }}{{index .Params.Images 0}}" alt="" srcset="" class="fit-width">
+            {{ end }}
         </figure>
         <div class="pl-4 pr-4 bg-white fit-width">
-            {{ $creationDate := .Params.Date }}
-            <p class="mt-4">by {{ .Params.Author }} {{ dateFormat "2" $creationDate }} {{ index $.Site.Data.meses (printf "%s" (dateFormat "1" $creationDate))}} {{ dateFormat "2006" $creationDate }}</cite>
+            {{ if isset .Params "Date" }}
+                {{ $creationDate := .Params.Date }}
+                <p class="mt-4">by {{ .Params.Author }} {{ dateFormat "2" $creationDate }} {{ index $.Site.Data.meses (printf "%s" (dateFormat "1" $creationDate))}} {{ dateFormat "2006" $creationDate }}</cite>
+            {{ end }}
             <a class="anchor" href="{{ .Permalink }}">
                 <h2>{{ .Title }}</h2>
             </a>

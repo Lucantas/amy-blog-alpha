@@ -12,9 +12,11 @@
                             {{ if isset .Params "author_logo" }}
                                 {{ $img = .Params.author_logo}}
                             {{ else }}
-                                {{ if gt (len .Params.Images) 0 }}
-                                    {{ $img = index .Params.images 0}}
-                                {{end }}
+                                {{ if isset .Params "Images" }}
+                                    {{ if gt (len .Params.Images) 0 }}
+                                        {{ $img = index .Params.images 0}}
+                                    {{end }}
+                                {{ end }}
                             {{ end }}
                             <figure>
                                 <img class="fit-width fit-height rounded" src="{{ .Site.BaseURL }}{{$img}}" alt="">

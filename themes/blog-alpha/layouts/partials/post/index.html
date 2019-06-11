@@ -1,0 +1,100 @@
+{{ define "main" -}}
+<section class="col-md-12 pl-5 pr-5">
+    <article class="row mt-4 ml-auto mr-auto bg-white c-gray-3 pt-5 pb-5">
+        <figure class="fit-width m-0">
+            {{ if isset .Params "Images" }}
+                <img src="{{ .Site.BaseURL }}{{index .Params.Images 0}}" alt="" srcset="" class="fit-width">
+            {{ end }}
+        </figure>
+        <div class="pl-0 pr-0 bg-white fit-width mt-4">            
+            <a class="anchor" href="{{ .Permalink }}">
+                <h1>{{ .Title }}</h1>
+            </a>
+            {{ if isset .Params "Date" }}
+                {{ $creationDate := .Params.Date }}
+                <p class="mt-4">by {{ .Params.Author }} {{ dateFormat "2" $creationDate }} {{ index $.Site.Data.meses (printf "%s" (dateFormat "1" $creationDate))}} {{ dateFormat "2006" $creationDate }}</cite>
+            {{ end }}
+            <div class="row pl-3 pr-3">
+                <div class="col-6 post-footer pt-2 pb-2 pl-0 pr-0 bg-white fit-width c-secondary post-categories f-08">      
+                    {{ if isset .Params "Categories" }}
+                        {{ $categoriesLen := len .Params.Categories }}
+                        {{ range $index, $element := .Params.Categories }}                    
+                            {{ $element }}{{ if (ne $index (sub $categoriesLen 1)) }}, {{ end }}
+                        {{ end }}
+                    {{ end }}   
+                </div>  
+                <div class="col-6">
+                    <div class="comments-button f-2 col-12 pr-0 p-2 m-auto text-center row justify-content-center align-items-center">
+                        <i class="icofont-speech-comments c-secondary col-6"></i>            
+                        <span class="c-primary text-center col-6 p-0">0</span>
+                    </div>
+                </div>       
+            </div>   
+        </div>
+        <div class="col-12 mt-4 post-line pl-0"></div>
+        <div class="post-text pt-4 pb-4" >
+            <p>{{ .Content }}</p>
+        </div>
+        {{ $tagsLen := len .Params.Tags }}
+        {{ if gt $tagsLen 0 }}
+        <div class="post-tags fit-width">
+            <h5 class="mt-3 mb-3 bold">Tags</h5> 
+            <div class="popular-categories">                                
+                {{ $counter := 0 }} 
+                {{ $limit := 9 }}
+                <ul class="row justify-content-start list-unstyled">
+                    {{ range $index, $name := .Params.Tags }}  
+                        {{ if le $counter $limit}}
+                            <li class="pt-2 pb-2 m-1">{{ $name }}</li>                
+                        {{ end }}
+                        {{ $counter = add $counter 1}}
+                    {{ end }}              
+                </ul>
+            </div>
+        </div>
+        {{ end }}
+        <div class="col-12 mt-4 post-line pl-0"></div>
+        <div class="popular-categories col-12 mt-4 pl-0 ml-0 row">   
+            <ul class="list-unstyled m-0 pl-0">
+                <li class="pt-2 pb-2 ml-1 mr-1"><i class="icofont-share"></i> Compartilhar</li>        
+            </ul> 
+            <div class="row justify-content-around mt-4"> 
+                <ul class="list-unstyled m-0">
+                    <li class="pt-2 pb-2 ml-1 mr-1"><i class="icofont-long-arrow-left"></i></li>        
+                    <li class="pt-2 pb-2 ml-1 mr-1"><i class="icofont-long-arrow-right"></i></li>        
+                </ul> 
+            </div> 
+        </div>
+        <div class="col-12 mt-4 post-line pl-0"></div>
+        <div class="post-related row mt-5 pl-3">        
+                <h5 class="mt-3 mb-3 bold">Posts Relacionados</h5> 
+                {{ $related := .Site.RegularPages.Related . | first 5  }}    
+                <ul class="list-unstyled m-0">
+                    {{ $.Scratch.Set "count" 0 }}
+                    {{ $currentPagePermalink := .Permalink }}
+                    {{ $tags := .Params.tags }}
+                    {{/*  */}}
+                    {{ range .Site.Pages }}
+                    {{ $isMatchTags := intersect $tags .Params.tags | len | lt 1 }}
+                    {{ if and $isMatchTags (ne .Permalink $currentPagePermalink) }}
+                        {{- partial "post/relatedPost.html" . -}}
+                    {{ $.Scratch.Add "count" 1 }}
+                    {{ end }}
+                    {{ end }}
+
+                    {{ if eq ($.Scratch.Get "count") 0 }}
+                    {{ $.Scratch.Set "limit" 0 }}
+                    {{/* range (where .Site.Pages "Section" "tutorials") */}}
+                    {{ range .Site.Pages }}
+                    {{ $isMatchTags := intersect $tags .Params.tags | len | lt 0 }}
+                    {{ if and $isMatchTags (ne .Permalink $currentPagePermalink) (lt ($.Scratch.Get "limit") 5) }}
+                        {{- partial "post/relatedPost.html" . -}}
+                        {{ $.Scratch.Add "limit" 1 }}
+                    {{ end }}
+                    {{ end }}
+                    {{ end }}
+                </ul>
+        </div>
+    </article> 
+</section>
+{{ end }}
