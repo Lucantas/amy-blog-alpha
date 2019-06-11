@@ -2,7 +2,7 @@
 <section class="col-md-12 pl-5 pr-5">
     <article class="row mt-4 ml-auto mr-auto bg-white c-gray-3 pt-5 pb-5">
         <figure class="fit-width m-0">
-            {{ if isset .Params "images" }}
+            {{ if ne .Params.Images nil }}
                 <img src="{{ .Site.BaseURL }}{{index .Params.Images 0}}" alt="" srcset="" class="fit-width">
             {{ end }}
         </figure>
@@ -35,23 +35,25 @@
         <div class="post-text pt-4 pb-4" >
             <p>{{ .Content }}</p>
         </div>
-        {{ $tagsLen := len .Params.Tags }}
-        {{ if gt $tagsLen 0 }}
-        <div class="post-tags fit-width">
-            <h5 class="mt-3 mb-3 bold">Tags</h5> 
-            <div class="popular-categories">                                
-                {{ $counter := 0 }} 
-                {{ $limit := 9 }}
-                <ul class="row justify-content-start list-unstyled">
-                    {{ range $index, $name := .Params.Tags }}  
-                        {{ if le $counter $limit}}
-                            <li class="pt-2 pb-2 m-1">{{ $name }}</li>                
-                        {{ end }}
-                        {{ $counter = add $counter 1}}
-                    {{ end }}              
-                </ul>
+        {{ if ne .Params.Tags nil }}
+            {{ $tagsLen := len .Params.Tags }}
+            {{ if gt $tagsLen 0 }}
+            <div class="post-tags fit-width">
+                <h5 class="mt-3 mb-3 bold">Tags</h5> 
+                <div class="popular-categories">                                
+                    {{ $counter := 0 }} 
+                    {{ $limit := 9 }}
+                    <ul class="row justify-content-start list-unstyled">
+                        {{ range $index, $name := .Params.Tags }}  
+                            {{ if le $counter $limit}}
+                                <li class="pt-2 pb-2 m-1">{{ $name }}</li>                
+                            {{ end }}
+                            {{ $counter = add $counter 1}}
+                        {{ end }}              
+                    </ul>
+                </div>
             </div>
-        </div>
+            {{ end }}
         {{ end }}
         <div class="col-12 mt-4 post-line pl-0"></div>
         <div class="popular-categories col-12 mt-4 pl-0 ml-0 row">   
