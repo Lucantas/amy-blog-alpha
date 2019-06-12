@@ -1,11 +1,11 @@
-<li>
+<li class="mb-3 mt-3">
     <article class="row pl-3 pr-4">
             <figure class="fit-width m-0">
                 {{ if ne .Params.images nil }}
                     <img src="{{ .Site.BaseURL }}{{index .Params.images 0}}" alt="" srcset="" class="fit-width">
                 {{ end }}
             </figure>
-            <h2 class="f-2 mt-2 mb-2">{{ .Title }}</h2>
+            <h2 class="f-2 mt-2 mb-2"><a class="anchor c-primary" href="{{ .Permalink }}">{{ .Title }}</a></h2>
             <div class="col-12 post-line pl-0" style="opacity:0.5"></div>
             <div class="row justify-content-around fit-width">
                 <div class="col-9 mt-1 row fit-width">
@@ -13,7 +13,7 @@
                         <i class="icofont-tags c-secondary"></i>
                     </div>
                     <div class="col-10 pr-0">
-                        <span class="c-gray-2 post-categories f-08">
+                        <span class="c-primary post-categories f-08">
                             {{ range $index, $element := .Params.categories }}                                     
                                 {{ $element }}{{ if eq $index 0 }}, {{ end }}
                             {{ end }}

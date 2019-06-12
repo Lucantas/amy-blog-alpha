@@ -3,7 +3,9 @@
     <article class="row mt-4 ml-auto mr-auto bg-white c-gray-3 pt-5 pb-5">
         <figure data-image="{{ .Params.Images }}" class="fit-width m-0">
             {{ if ne .Params.images nil }}
-                <img src="{{ .Site.BaseURL }}{{index .Params.images 0}}" alt="" srcset="" class="fit-width">
+                {{ if gt (len .Params.images) 0}} 
+                    <img src="{{ .Site.BaseURL }}{{index .Params.images 0}}" alt="" srcset="" class="fit-width">
+                {{ end }}
             {{ end }} 
         </figure>
         <div class="pl-0 pr-0 bg-white fit-width mt-4">            
@@ -36,12 +38,14 @@
                 </div>       
             </div>   
         </div>
+        {{ if gt (len .Content) 0}}
         <div class="col-12 mt-4 post-line pl-0"></div>
         <div class="post-text pt-4 pb-4" >
             <p>{{ .Content }}</p>
-        </div>
+        </div>        
         
         <div class="col-12 mt-4 post-line pl-0"></div>
+        {{ end }}
         <div class="popular-categories col-12 mt-4 pl-0 ml-0 row">   
             {{ if ne .Params.Tags nil }}
                 {{ $tagsLen := len .Params.Tags }}
@@ -64,12 +68,40 @@
                 {{ end }}
             {{ end }}
             <ul class="list-unstyled m-0 pl-0">
-                <li class="pt-2 pb-2 ml-1 mr-1"><i class="icofont-share"></i> Compartilhar</li>        
+                <li id="shareBtn" class="pt-2 pb-2 ml-1 mr-1 p-4">
+                    <i class="icofont-share"></i> 
+                    <span>Compartilhar</span>
+                </li>        
+                <li class="pt-2 pb-2 ml-1 mr-1 social-icon d-none">
+                    <i class="icofont-facebook"></i>                
+                </li>        
+                <li class="pt-2 pb-2 ml-1 mr-1 social-icon d-none">
+                    <i class="icofont-twitter"></i> 
+                </li>        
+                <li class="pt-2 pb-2 ml-1 mr-1 social-icon d-none">
+                    <i class="icofont-linkedin"></i> 
+                </li>        
             </ul> 
             <div class="row justify-content-around mt-4"> 
                 <ul class="list-unstyled m-0">
-                    <li class="pt-2 pb-2 ml-1 mr-1"><i class="icofont-long-arrow-left"></i></li>        
-                    <li class="pt-2 pb-2 ml-1 mr-1"><i class="icofont-long-arrow-right"></i></li>        
+                    {{ with $prev := .Prev}}
+                        {{ if ne $prev nil }}
+                        <li class="pt-2 pb-2 ml-1 mr-1">                       
+                            <a class="anchor" title="{{ $prev.Title }}" href="{{ $prev.Permalink }}">
+                                <i class="icofont-long-arrow-left"></i>
+                            </a>
+                        </li>        
+                        {{ end }}
+                    {{ end }}
+                    {{ with $next := .Next}}
+                        {{ if ne $next nil }}
+                        <li class="pt-2 pb-2 ml-1 mr-1">
+                            <a class="anchor" title="" href="{{ $next.Permalink }}">
+                                <i class="icofont-long-arrow-right"></i>
+                            </a>
+                        </li>        
+                        {{ end }}
+                    {{ end }}
                 </ul> 
             </div> 
         </div>
