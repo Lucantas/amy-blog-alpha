@@ -81,6 +81,15 @@ article{
 .c-gray-3{
     color:#333;
 }
+.c-facebook{
+    color:#3b5999 !important;
+}
+.c-twitter{
+    color:#55acee !important;
+}
+.c-whatsapp{
+    color:#25D366 !important;
+}
 .b-lightgray{
     border-color: lightgray !important;
 }
@@ -102,6 +111,28 @@ article{
     width:100%;
 }
 
+.pos-absolute{
+    position: absolute;
+}
+
+.bottom-absolute{
+    position: absolute;
+    bottom: 0;
+}
+
+.top-absolute{
+    position: absolute;
+    top: 0;
+}
+.left-absolute{
+    position: absolute;
+    left: 0;
+}
+.right-absolute{
+    position: absolute;
+    right: 0;
+}
+
 .flex{
     display: flex;
 }
@@ -116,6 +147,7 @@ article{
 
 .hidden{
     opacity: 0;
+    visibility: hidden;
 }
 
 .f-08{

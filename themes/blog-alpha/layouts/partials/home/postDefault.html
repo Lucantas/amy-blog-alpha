@@ -1,5 +1,5 @@
 <div class="col-md-6">
-    <article class="main-article row mt-4 ml-auto mr-auto bg-white c-gray-3">
+    <article class="main-article row mt-4 ml-auto mr-auto bg-white c-gray-3 pb-2">
         <figure class="fit-width m-0">
             {{ if isset .Params "images" }}
                 <img src="{{ .Site.BaseURL }}{{index .Params.images 0}}" alt="" srcset="" class="fit-width">
@@ -29,10 +29,12 @@
                 <span class="c-primary text-center col-6 pl-2 pr-0">0</span>
             </div>
         </div>
-        <div class="post-footer p-4 bg-white fit-width c-secondary post-categories f-08">      
-            {{ $categoriesLen := len .Params.categories }}
-            {{ range $index, $element := .Params.categories }}                    
-                {{ $element }}{{ if (ne $index (sub $categoriesLen 1)) }}, {{ end }}
+        <div class="post-footer pl-4 pr-4 pt-2 pb-2 bg-white fit-width c-secondary post-categories f-08">      
+            {{ if ne .Params.categories nil }}
+                {{ $categoriesLen := len .Params.categories }}
+                {{ range $index, $element := .Params.categories }}                    
+                    {{ $element }}{{ if (ne $index (sub $categoriesLen 1)) }}, {{ end }}
+                {{ end }}
             {{ end }}
         </div>
     </article>

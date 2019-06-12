@@ -1,30 +1,19 @@
 {{ define "main" -}}
-<section class="popular-categories container-fluid bg-gray-1">
-    <div class="container pt-5">
-        {{ with .Site.Taxonomies.categories }}
-            {{ $counter := 0 }}
-            {{ $limit := 9 }}
-            <ul class="list-unstyled m-0">
-                <li class="pt-2 pb-2 active">Todas</li>                
-                {{ range $name, $taxonomy := . }}
-                    {{ if le $counter $limit}}
-                        <li class="pt-2 pb-2 ml-1 mr-1">{{ $name }}</li>                
-                    {{ end }}
-                    {{ $counter = add $counter 1}}
-                {{ end }}
-            </ul>
-        {{ end }}    
-    </div>
-</section>
+{{- partial "components/popularCategories.html" . -}}
 <section class="post-list post-container p-0 bg-gray-1 row">
+    <div class="row">
+        <div class="carousel-container">
+            {{ range first 3 (where .Pages "Params.highlight" true) }}
+                {{- partial "home/highlight.html" . -}}
+            {{ end }} 
+        </div>
+    </div>
     <div class="row pl-2 pr-2 m-0">
         <div class="row default-row pt-5 pl-2 pr-2 pr-lg-5">
             <div class="col-md-8 p-0 pr-lg-4">
                 <div class="row pl-5 pr-5 pr-lg-0">
-                    {{ range .Pages}}
-                        {{ if not (.Params.reader)}}
-                            {{- partial "home/postDefault.html" . -}}
-                        {{ end }}
+                    {{ range (where (where .Pages "Params.reader" "!=" true) "Params.highlight" "!=" true )}}
+                        {{- partial "home/postDefault.html" . -}}
                     {{ end }}  
                 </div>
             </div>  

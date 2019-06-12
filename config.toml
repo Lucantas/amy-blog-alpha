@@ -4,6 +4,10 @@ title = "Pais por Acaso"
 theme = "blog-alpha"
 publishDir = "amy.github.io"
 
+[taxonomies]
+    tag = "tags"
+    category = "categories"
+
 [menu]
 
     [[menu.main]]

@@ -1,0 +1,21 @@
+<section class="popular-categories container-fluid bg-gray-1">
+        <div class="container pt-5">
+            {{ with .Site.Taxonomies.categories }}
+                {{ $counter := 0 }}
+                {{ $limit := 9 }}
+                <ul id="categories" class="list-unstyled m-0 carousel-container">
+                    <li class="pt-2 pb-2 active"><a href="{{ '/' | relURL }}">Todas</a></li>                
+                    {{ range $name, $taxonomy := . }}
+                        {{ if le $counter $limit}}
+                            <li class="pt-2 pb-2 ml-1 mr-1">
+                                <a class="anchor" href="{{ "/categories" | relURL }}/{{ $name }}">
+                                    {{ $name }}
+                                </a>
+                            </li>                
+                        {{ end }}
+                        {{ $counter = add $counter 1}}
+                    {{ end }}
+                </ul>
+            {{ end }}    
+        </div>
+    </section> 

@@ -1,0 +1,35 @@
+<div class="col-md-6">
+        <article class="highlight-article row mt-4 ml-auto mr-auto bg-white c-gray-3">
+            <figure class="fit-width m-0">
+                {{ if isset .Params "images" }}
+                    <img src="{{ .Site.BaseURL }}{{index .Params.images 0}}" alt="" srcset="" class="fit-width fit-height">
+                {{ end }}
+            </figure>
+            <div class="post-body pl-0 bg-white fit-width bottom-absolute left-absolute">
+                <div class="pl-5 pr-5">
+                    {{ if ne .Params.date nil }}
+                        {{ $creationDate := .Params.date }}
+                        <p class="mt-2">
+                            {{ if ne .Params.author nil }}
+                                by {{ .Params.author }} 
+                            {{ end }}
+                            {{ dateFormat "2" $creationDate }} {{ index $.Site.Data.meses (printf "%s" (dateFormat "1" $creationDate))}} {{ dateFormat "2006" $creationDate }}
+                        </p>
+                    {{ end }}
+                    <a class="anchor" href="{{ .Permalink }}">
+                        <h2>{{ .Title }}</h2>
+                    </a>
+                    <div class="post-text pl">
+                        <p>{{ .Content }}</p>
+                    </div>
+                    <div class="col-12 mt-4 post-line pl-0"></div>
+                    <div class="post-footer fit-width c-white post-categories f-08 pt-2 pb-2">      
+                        {{ $categoriesLen := len .Params.categories }}
+                        {{ range $index, $element := .Params.categories }}                    
+                            {{ $element }}{{ if (ne $index (sub $categoriesLen 1)) }}, {{ end }}
+                        {{ end }}
+                    </div>
+                </div>
+            </div> 
+        </article>
+    </div>

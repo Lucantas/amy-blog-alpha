@@ -7,4 +7,8 @@
     {{- partial "css.html" . -}}
     <link href="https://fonts.googleapis.com/css?family=Emilys+Candy&display=swap" rel="stylesheet">     
     <link rel="stylesheet" href="{{ .Site.BaseURL }}fonts/icofont/icofont.min.css">
+
+    {{ if eq .Kind "taxonomy" }}
+    <link rel="stylesheet" href="{{ .Site.BaseURL }}css/taxonomy.css">
+    {{ end }}
 </head>
