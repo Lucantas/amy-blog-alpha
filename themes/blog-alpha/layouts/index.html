@@ -1,19 +1,19 @@
 {{ define "main" -}}
 {{- partial "components/popularCategories.html" . -}}
-<section class="post-list post-container p-0 bg-gray-1 row">
-    <div class="row">
+<section class="post-list post-container pl-0 pr-0 pb-5 bg-gray-1 row">
+    {{/* <div class="row">
         <div class="carousel-container">
             {{ range first 3 (where .Pages "Params.highlight" true) }}
                 {{- partial "home/highlight.html" . -}}
             {{ end }} 
         </div>
-    </div>
+    </div>*/}}
     <div class="row pl-2 pr-2 m-0">
         <div class="row default-row pt-5 pl-2 pr-2 pr-lg-5">
             <div class="col-md-8 p-0 pr-lg-4">
                 <div class="row pl-5 pr-5 pr-lg-0">
                     {{ range (where (where .Pages "Params.reader" "!=" true) "Params.highlight" "!=" true )}}
-                        {{- partial "home/postDefault.html" . -}}
+                        {{- partial "home/postDefaultMD.html" . -}}
                     {{ end }}  
                 </div>
             </div>  

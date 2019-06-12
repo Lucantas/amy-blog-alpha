@@ -1,41 +1,39 @@
-<div class="col-md-6">
-    <article class="main-article row mt-4 ml-auto mr-auto bg-white c-gray-3 pb-2">
-        <figure class="fit-width m-0">
-            {{ if isset .Params "images" }}
-                <img src="{{ .Site.BaseURL }}{{index .Params.images 0}}" alt="" srcset="" class="fit-width">
-            {{ end }}
-        </figure>
-        <div class="pl-4 pr-4 bg-white fit-width">
-            {{ if ne .Params.date nil }}
-                {{ $creationDate := .Params.date }}
-                <p class="mt-4">
-                    {{ if ne .Params.author nil }}
-                        by {{ .Params.author }} 
-                    {{ end }}
-                    {{ dateFormat "2" $creationDate }} {{ index $.Site.Data.meses (printf "%s" (dateFormat "1" $creationDate))}} {{ dateFormat "2006" $creationDate }}
-                </p>
-            {{ end }}
-            <a class="anchor" href="{{ .Permalink }}">
-                <h2>{{ .Title }}</h2>
-            </a>
-            <div class="post-text">
-                <p>{{ .Content }}</p>
-            </div>
-        </div> 
-        <div class="fit-width row justify-content-around">
-            <div class="col-8 mt-4 post-line pl-0"></div>
-            <div class="comments-button f-2 col-4 pr-0 p-2 mt-1 ml-auto text-center row justify-content-center align-items-center">
-                <i class="icofont-speech-comments c-secondary col-5 p-0"></i>            
-                <span class="c-primary text-center col-6 pl-2 pr-0">0</span>
-            </div>
-        </div>
-        <div class="post-footer pl-4 pr-4 pt-2 pb-2 bg-white fit-width c-secondary post-categories f-08">      
-            {{ if ne .Params.categories nil }}
-                {{ $categoriesLen := len .Params.categories }}
-                {{ range $index, $element := .Params.categories }}                    
-                    {{ $element }}{{ if (ne $index (sub $categoriesLen 1)) }}, {{ end }}
+<article class="main-article row mt-4 ml-auto mr-auto bg-white c-gray-3 pb-2">
+    <figure class="fit-width m-0">
+        {{ if isset .Params "images" }}
+            <img src="{{ .Site.BaseURL }}{{index .Params.images 0}}" alt="" srcset="" class="fit-width">
+        {{ end }}
+    </figure>
+    <div class="pl-4 pr-4 bg-white fit-width">
+        {{ if ne .Params.date nil }}
+            {{ $creationDate := .Params.date }}
+            <p class="mt-4">
+                {{ if ne .Params.author nil }}
+                    by {{ .Params.author }} 
                 {{ end }}
-            {{ end }}
+                {{ dateFormat "2" $creationDate }} {{ index $.Site.Data.meses (printf "%s" (dateFormat "1" $creationDate))}} {{ dateFormat "2006" $creationDate }}
+            </p>
+        {{ end }}
+        <a class="anchor" href="{{ .Permalink }}">
+            <h2>{{ .Title }}</h2>
+        </a>
+        <div class="post-text">
+            <p>{{ .Content }}</p>
         </div>
-    </article>
-</div>
+    </div> 
+    <div class="fit-width row justify-content-around">
+        <div class="col-8 mt-4 post-line pl-0"></div>
+        <div class="comments-button f-2 col-4 pr-0 p-2 mt-1 ml-auto text-center row justify-content-center align-items-center">
+            <i class="icofont-speech-comments c-secondary col-5 p-0"></i>            
+            <span class="c-primary text-center col-6 pl-2 pr-0">0</span>
+        </div>
+    </div>
+    <div class="post-footer pl-4 pr-4 pt-2 pb-2 bg-white fit-width c-secondary post-categories f-08">      
+        {{ if ne .Params.categories nil }}
+            {{ $categoriesLen := len .Params.categories }}
+            {{ range $index, $element := .Params.categories }}                    
+                {{ $element }}{{ if (ne $index (sub $categoriesLen 1)) }}, {{ end }}
+            {{ end }}
+        {{ end }}
+    </div>
+</article>
