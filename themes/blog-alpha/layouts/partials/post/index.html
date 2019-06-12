@@ -73,13 +73,19 @@
                     <span>Compartilhar</span>
                 </li>        
                 <li class="pt-2 pb-2 ml-1 mr-1 social-icon d-none">
-                    <i class="icofont-facebook"></i>                
+                    <a class="anchor c-facebook" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u={{ .Permalink }}">
+                        <i class="icofont-facebook"></i>   
+                    </a>             
                 </li>        
                 <li class="pt-2 pb-2 ml-1 mr-1 social-icon d-none">
-                    <i class="icofont-twitter"></i> 
+                    <a class="anchor c-twitter" target="_blank" href="https://twitter.com/intent/tweet?text={{.Title}}via=@{{ .Site.Social.twitter }}&amp;url={{ .Permalink }}">
+                        <i class="icofont-twitter"></i> 
+                    </a>                   
                 </li>        
                 <li class="pt-2 pb-2 ml-1 mr-1 social-icon d-none">
-                    <i class="icofont-linkedin"></i> 
+                    <a class="anchor c-whatsapp" href="whatsapp://send?text={{ .Permalink }}">
+                        <i class="icofont-brand-whatsapp"></i>
+                    </a>                    
                 </li>        
             </ul> 
             <div class="row justify-content-around mt-4"> 
