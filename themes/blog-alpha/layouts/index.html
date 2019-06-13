@@ -12,7 +12,7 @@
         <div class="row default-row pt-5 pl-2 pr-2 pr-lg-5">
             <div class="col-md-8 p-0 pr-lg-4">
                 <div class="row pl-5 pr-5 pr-lg-0">
-                    {{ range (where (where .Pages "Params.reader" "!=" true) "Params.highlight" "!=" true )}}
+                    {{ range (where (where (where .Pages "Params.reader" "!=" true) "Params.highlight" "!=" true ) "Section" "post")}}
                         {{- partial "home/postDefaultMD.html" . -}}
                     {{ end }}  
                 </div>
