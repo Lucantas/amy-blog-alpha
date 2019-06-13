@@ -17,18 +17,5 @@ fields:
 - type: list
   name: categories
   label: categories
-- name: categories2
-  type: select
-  default: []
-  config:
-    required: false
-    options: []
-    source:
-      type: documents
-      section: posts
-      file: content/post/hello-forestry.md
-      path: categories
-  label: Categories
-  description: Teste
 pages:
 - content/post/um-post-relacionado.md
