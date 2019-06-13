@@ -1,9 +1,10 @@
 const MENU = document.getElementById("menu");
 const LOGO = document.getElementById("logo");
-
+const CATEGORIES = document.getElementById("categories");
 
 (window).onload = function(){
     handleMenu();
+    categoriesSlide();
 }   
 
 function handleMenu(elm){
@@ -21,4 +22,25 @@ function handleMenu(elm){
             LOGO.removeClass("d-none");
         }
     }
+}
+
+function categoriesSlide(){
+
+    // categories element not loaded, do nothing
+    if (!CATEGORIES) return;
+
+    const list = CATEGORIES.querySelectorAll('li');
+    const index = list.indexOf(CATEGORIES.querySelector("li:not(.glide__slide--clone).active"));
+
+    new Glide('#categories', {
+        type: 'carousel',
+        perView: 3,
+        startAt:index
+    }).mount();
+
+    //categories.querySelector("ul").style.width = "100%";
+    CATEGORIES.querySelectorAll("li").forEach((li) => {
+        li.style.width = "100%";
+    })
+
 }

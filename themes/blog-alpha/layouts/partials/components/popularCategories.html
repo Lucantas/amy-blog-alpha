@@ -1,13 +1,14 @@
-<section class="popular-categories container-fluid bg-gray-1">
-        <div class="container pt-5">
+<section  id="categories" class="popular-categories container-fluid bg-gray-1">
+        <div class="container pt-5" data-glide-el="track">
+            {{ $curPage := . }}
             {{ with .Site.Taxonomies.categories }}
                 {{ $counter := 0 }}
                 {{ $limit := 9 }}
-                <ul id="categories" class="list-unstyled m-0 carousel-container">
-                    <li class="pt-2 pb-2 active"><a class="anchor" href="{{ "/" | relURL }}">Todas</a></li>                
+                <ul class="list-unstyled m-0 carousel-container glide__slides ">
+                    <li class="pt-2 pb-2 {{ if $.IsHome }} active {{ end }} slider__frame glide__slide text-center"><a class="anchor" href="{{ "/" | relURL }}">Todas</a></li>                
                     {{ range $name, $taxonomy := . }}
                         {{ if le $counter $limit}}
-                            <li class="pt-2 pb-2 ml-1 mr-1">
+                            <li class="pt-2 pb-2 ml-1 mr-1 slider__frame glide__slide text-center {{ if eq (lower $curPage.Title) (lower $name) }} active {{ end }}">
                                 <a class="anchor" href="{{ "/categories" | relURL }}/{{ $name }}">
                                     {{ $name }}
                                 </a>
