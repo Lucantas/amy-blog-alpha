@@ -18,5 +18,4 @@ fields:
   name: categories
   label: categories
 pages:
-- content/sobre-nós.md
 - content/post/um-post-relacionado.md
